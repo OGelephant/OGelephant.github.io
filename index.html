@@ -64,6 +64,13 @@
             color: #4CAF50;
             text-decoration: none;
         }
+        .comments {
+            margin: 20px 0;
+        }
+        .comments textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -94,9 +101,33 @@
             <p>如果您有任何问题或建议，请通过以下方式与我联系：</p>
             <p>Email: <a href="mailto:your_email@example.com">your_email@example.com</a></p>
         </div>
+
+        <div class="comments">
+            <h2>留言板</h2>
+            <textarea id="commentInput" placeholder="请输入您的留言" rows="4"></textarea>
+            <button onclick="addComment()">提交留言</button>
+            <div id="commentList" style="margin-top: 20px;"></div>
+        </div>
     </div>
     <footer>
         <p>© 2024 我的 GitHub Pages 网站</p>
     </footer>
+
+    <script>
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentText = commentInput.value.trim();
+            if (commentText) {
+                const commentList = document.getElementById('commentList');
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'project'; // 使用已有样式
+                commentDiv.innerText = commentText;
+                commentList.appendChild(commentDiv);
+                commentInput.value = ''; // 清空输入框
+            } else {
+                alert('请输入留言内容！');
+            }
+        }
+    </script>
 </body>
 </html>
