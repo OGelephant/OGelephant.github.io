@@ -27,7 +27,7 @@
             line-height: 1.5;
             margin: 20px;
         }
-        .container {
+       .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -44,30 +44,30 @@
             bottom: 0;
             width: 100%;
         }
-        .projects {
+       .projects {
             margin: 20px 0;
             border-top: 2px solid #4CAF50;
             padding-top: 20px;
         }
-        .project {
+       .project {
             margin: 15px 0;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fafafa;
         }
-        .contact {
+       .contact {
             margin: 20px 0;
             text-align: center;
         }
-        .contact a {
+       .contact a {
             color: #4CAF50;
             text-decoration: none;
         }
-        .comments {
+       .comments {
             margin: 20px 0;
         }
-        .comments textarea {
+       .comments textarea {
             width: 100%;
             margin-bottom: 10px;
         }
@@ -124,14 +124,30 @@
             if (commentText) {
                 const commentList = document.getElementById('commentList');
                 const commentDiv = document.createElement('div');
-                commentDiv.className = 'project'; // 使用已有样式
+                commentDiv.className = 'project'; 
                 commentDiv.innerText = commentText;
                 commentList.appendChild(commentDiv);
-                commentInput.value = ''; // 清空输入框
+                commentInput.value = ''; 
+
+                // 将留言保存到本地存储
+                let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
+                existingComments.push(commentText);
+                localStorage.setItem('comments', JSON.stringify(existingComments));
             } else {
                 alert('请输入留言内容！');
             }
         }
+
+        window.onload = function() {
+            const commentList = document.getElementById('commentList');
+            let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
+            existingComments.forEach(function(comment) {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'project';
+                commentDiv.innerText = comment;
+                commentList.appendChild(commentDiv);
+            });
+        };
     </script>
 </body>
 </html>
