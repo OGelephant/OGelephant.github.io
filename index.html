@@ -27,7 +27,7 @@
             line-height: 1.5;
             margin: 20px;
         }
-       .container {
+        .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -44,30 +44,38 @@
             bottom: 0;
             width: 100%;
         }
-       .projects {
+        .projects, .comments {
             margin: 20px 0;
             border-top: 2px solid #4CAF50;
             padding-top: 20px;
         }
-       .project {
+        .project, .comment {
             margin: 15px 0;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fafafa;
+            position: relative;
         }
-       .contact {
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .contact {
             margin: 20px 0;
             text-align: center;
         }
-       .contact a {
+        .contact a {
             color: #4CAF50;
             text-decoration: none;
         }
-       .comments {
-            margin: 20px 0;
-        }
-       .comments textarea {
+        .comments textarea {
             width: 100%;
             margin-bottom: 10px;
         }
@@ -99,16 +107,12 @@
         <div class="contact">
             <h2>联系方式</h2>
             <p>如果您有任何问题或建议，请通过以下方式与我联系：</p>
-<<<<<<< HEAD
-            <p>Email: <a href="haozhang6868@163.com">haozhang6868@163.com</a></p>
-=======
-            <p>Email: <a href="mailto:your_email@example.com">your_email@example.com</a></p>
->>>>>>> 1a571556b0f303b4ff952d3b5704c6e826b29f91
+            <p>Email: <a href="mailto:haozhang6868@163.com">haozhang6868@163.com</a></p>
         </div>
 
         <div class="comments">
             <h2>留言板</h2>
-            <textarea id="commentInput" placeholder="请输入您的留言" rows="4"></textarea>
+            <textarea id="commentInput" placeholder="请输入您的留言 (最多200字符)" rows="4" maxlength="200"></textarea>
             <button onclick="addComment()">提交留言</button>
             <div id="commentList" style="margin-top: 20px;"></div>
         </div>
@@ -124,12 +128,31 @@
             if (commentText) {
                 const commentList = document.getElementById('commentList');
                 const commentDiv = document.createElement('div');
-                commentDiv.className = 'project'; 
+                commentDiv.className = 'comment'; 
                 commentDiv.innerText = commentText;
+
+                // Add timestamp
+                const timestamp = new Date().toLocaleString();
+                const timeDiv = document.createElement('div');
+                timeDiv.innerText = timestamp;
+                timeDiv.style.fontSize = '0.8em';
+                timeDiv.style.color = '#666';
+                commentDiv.appendChild(timeDiv);
+
+                // Add delete button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.innerText = '删除';
+                deleteBtn.onclick = function() {
+                    commentList.removeChild(commentDiv);
+                    saveComments();
+                };
+                commentDiv.appendChild(deleteBtn);
+
                 commentList.appendChild(commentDiv);
                 commentInput.value = ''; 
 
-                // 将留言保存到本地存储
+                // Save comment to local storage
                 let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
                 existingComments.push(commentText);
                 localStorage.setItem('comments', JSON.stringify(existingComments));
@@ -138,13 +161,41 @@
             }
         }
 
+        function saveComments() {
+            const commentList = document.getElementById('commentList');
+            const comments = [];
+            for (const commentDiv of commentList.children) {
+                comments.push(commentDiv.firstChild.nodeValue.trim());
+            }
+            localStorage.setItem('comments', JSON.stringify(comments));
+        }
+
         window.onload = function() {
             const commentList = document.getElementById('commentList');
             let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
             existingComments.forEach(function(comment) {
                 const commentDiv = document.createElement('div');
-                commentDiv.className = 'project';
+                commentDiv.className = 'comment';
                 commentDiv.innerText = comment;
+
+                // Add timestamp
+                const timestamp = new Date().toLocaleString();
+                const timeDiv = document.createElement('div');
+                timeDiv.innerText = timestamp;
+                timeDiv.style.fontSize = '0.8em';
+                timeDiv.style.color = '#666';
+                commentDiv.appendChild(timeDiv);
+
+                // Add delete button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.innerText = '删除';
+                deleteBtn.onclick = function() {
+                    commentList.removeChild(commentDiv);
+                    saveComments();
+                };
+                commentDiv.appendChild(deleteBtn);
+
                 commentList.appendChild(commentDiv);
             });
         };
