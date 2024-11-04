@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>张浩的网站</title>
+    <title>张浩的个人简历</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,28 +44,17 @@
             bottom: 0;
             width: 100%;
         }
-        .projects, .comments {
+        .skills, .projects, .education, .experience {
             margin: 20px 0;
             border-top: 2px solid #4CAF50;
             padding-top: 20px;
         }
-        .project, .comment {
+        .skill, .project, .edu-item, .exp-item {
             margin: 15px 0;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #fafafa;
-            position: relative;
-        }
-        .delete-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 5px;
-            cursor: pointer;
         }
         .contact {
             margin: 20px 0;
@@ -75,31 +64,57 @@
             color: #4CAF50;
             text-decoration: none;
         }
-        .comments textarea {
-            width: 100%;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
     <header>
-        <h1>欢迎来到我的网站!</h1>
+        <h1>张浩的个人简历</h1>
     </header>
     <div class="container">
-        <p>这是使用 GitHub Pages 创建的一个简单网站。通过这个网站，我将分享我的项目、想法和更多内容。</p>
-        
+        <p>欢迎来到我的个人简历网站！我是一名对技术充满热情的工程师，专注于人工智能和控制科学领域。</p>
+
+        <div class="education">
+            <h2>教育背景</h2>
+            <div class="edu-item">
+                <strong>硕士学位，控制科学与工程</strong> - 西安交通大学<br>
+                2022 - 2024
+            </div>
+            <div class="edu-item">
+                <strong>学士学位，电子科学与技术</strong> - 电子科技大学<br>
+                2018 - 2022
+            </div>
+        </div>
+
+        <div class="experience">
+            <h2>工作经验</h2>
+            <div class="exp-item">
+                <strong>研究助理</strong> - 西安交通大学<br>
+                2023年 - 至今
+                <p>参与多个项目，专注于机器人感知和视觉SLAM技术的研究。</p>
+            </div>
+        </div>
+
+        <div class="skills">
+            <h2>技能</h2>
+            <div class="skill">人工智能与机器学习</div>
+            <div class="skill">深度学习框架（如TensorFlow, PyTorch）</div>
+            <div class="skill">控制系统设计与分析</div>
+            <div class="skill">编程语言：Python, C++</div>
+            <div class="skill">计算机视觉与图像处理</div>
+        </div>
+
         <div class="projects">
-            <h2>我的项目</h2>
+            <h2>项目经验</h2>
             <div class="project">
-                <h3>项目一：智能家居控制系统</h3>
-                <p>这个项目旨在通过移动设备控制家中的各种智能设备，包括灯光、温度和安防系统。</p>
+                <h3>智能家居控制系统</h3>
+                <p>通过移动设备控制家中的各种智能设备，包括灯光、温度和安防系统。</p>
             </div>
             <div class="project">
-                <h3>项目二：图像识别应用</h3>
+                <h3>图像识别应用</h3>
                 <p>使用深度学习技术开发的图像识别应用，能够自动识别并分类图片中的物体。</p>
             </div>
             <div class="project">
-                <h3>项目三：个人博客平台</h3>
+                <h3>个人博客平台</h3>
                 <p>一个简单的个人博客平台，用户可以发表文章并与其他人分享想法。</p>
             </div>
         </div>
@@ -109,96 +124,9 @@
             <p>如果您有任何问题或建议，请通过以下方式与我联系：</p>
             <p>Email: <a href="mailto:haozhang6868@163.com">haozhang6868@163.com</a></p>
         </div>
-
-        <div class="comments">
-            <h2>留言板</h2>
-            <textarea id="commentInput" placeholder="请输入您的留言 (最多200字符)" rows="4" maxlength="200"></textarea>
-            <button onclick="addComment()">提交留言</button>
-            <div id="commentList" style="margin-top: 20px;"></div>
-        </div>
     </div>
     <footer>
-        <p>© 2024 我的 GitHub Pages 网站</p>
+        <p>© 2024 张浩的个人简历网站</p>
     </footer>
-
-    <script>
-        function addComment() {
-            const commentInput = document.getElementById('commentInput');
-            const commentText = commentInput.value.trim();
-            if (commentText) {
-                const commentList = document.getElementById('commentList');
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'comment'; 
-                commentDiv.innerText = commentText;
-
-                // Add timestamp
-                const timestamp = new Date().toLocaleString();
-                const timeDiv = document.createElement('div');
-                timeDiv.innerText = timestamp;
-                timeDiv.style.fontSize = '0.8em';
-                timeDiv.style.color = '#666';
-                commentDiv.appendChild(timeDiv);
-
-                // Add delete button
-                const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'delete-btn';
-                deleteBtn.innerText = '删除';
-                deleteBtn.onclick = function() {
-                    commentList.removeChild(commentDiv);
-                    saveComments();
-                };
-                commentDiv.appendChild(deleteBtn);
-
-                commentList.appendChild(commentDiv);
-                commentInput.value = ''; 
-
-                // Save comment to local storage
-                let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
-                existingComments.push(commentText);
-                localStorage.setItem('comments', JSON.stringify(existingComments));
-            } else {
-                alert('请输入留言内容！');
-            }
-        }
-
-        function saveComments() {
-            const commentList = document.getElementById('commentList');
-            const comments = [];
-            for (const commentDiv of commentList.children) {
-                comments.push(commentDiv.firstChild.nodeValue.trim());
-            }
-            localStorage.setItem('comments', JSON.stringify(comments));
-        }
-
-        window.onload = function() {
-            const commentList = document.getElementById('commentList');
-            let existingComments = JSON.parse(localStorage.getItem('comments')) || [];
-            existingComments.forEach(function(comment) {
-                const commentDiv = document.createElement('div');
-                commentDiv.className = 'comment';
-                commentDiv.innerText = comment;
-
-                // Add timestamp
-                const timestamp = new Date().toLocaleString();
-                const timeDiv = document.createElement('div');
-                timeDiv.innerText = timestamp;
-                timeDiv.style.fontSize = '0.8em';
-                timeDiv.style.color = '#666';
-                commentDiv.appendChild(timeDiv);
-
-                // Add delete button
-                const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'delete-btn';
-                deleteBtn.innerText = '删除';
-                deleteBtn.onclick = function() {
-                    commentList.removeChild(commentDiv);
-                    saveComments();
-                };
-                commentDiv.appendChild(deleteBtn);
-
-                commentList.appendChild(commentDiv);
-            });
-        };
-    </script>
 </body>
 </html>
