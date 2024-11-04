@@ -4,74 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>张浩的个人简历</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        p {
-            font-size: 1.2em;
-            line-height: 1.5;
-            margin: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        .skills, .projects, .education, .experience {
-            margin: 20px 0;
-            border-top: 2px solid #4CAF50;
-            padding-top: 20px;
-        }
-        .skill, .project, .edu-item, .exp-item {
-            margin: 15px 0;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fafafa;
-        }
-        .contact {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .contact a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>张浩的个人简历</h1>
+        <img src="images/1.jpg" alt="个人照片" class="profile-photo">
+        <h1>个人简历</h1>
     </header>
     <div class="container">
         <p>欢迎来到我的个人简历网站！我是一名对技术充满热情的工程师，专注于人工智能和控制科学领域。</p>
+
+        <hr>
 
         <div class="education">
             <h2>教育背景</h2>
@@ -85,6 +30,8 @@
             </div>
         </div>
 
+        <hr>
+
         <div class="experience">
             <h2>工作经验</h2>
             <div class="exp-item">
@@ -94,14 +41,18 @@
             </div>
         </div>
 
+        <hr>
+
         <div class="skills">
             <h2>技能</h2>
-            <div class="skill">人工智能与机器学习</div>
-            <div class="skill">深度学习框架（如TensorFlow, PyTorch）</div>
-            <div class="skill">控制系统设计与分析</div>
-            <div class="skill">编程语言：Python, C++</div>
-            <div class="skill">计算机视觉与图像处理</div>
+            <div class="skill"><i class="fas fa-check-circle"></i> 人工智能与机器学习</div>
+            <div class="skill"><i class="fas fa-check-circle"></i> 深度学习框架（如TensorFlow, PyTorch）</div>
+            <div class="skill"><i class="fas fa-check-circle"></i> 控制系统设计与分析</div>
+            <div class="skill"><i class="fas fa-check-circle"></i> 编程语言：Python, C++</div>
+            <div class="skill"><i class="fas fa-check-circle"></i> 计算机视觉与图像处理</div>
         </div>
+
+        <hr>
 
         <div class="projects">
             <h2>项目经验</h2>
@@ -119,14 +70,17 @@
             </div>
         </div>
 
+        <hr>
+
         <div class="contact">
             <h2>联系方式</h2>
             <p>如果您有任何问题或建议，请通过以下方式与我联系：</p>
-            <p>Email: <a href="mailto:haozhang6868@163.com">haozhang6868@163.com</a></p>
+            <p>Email: <a href="mailto:haozhang6868@163.com" class="contact-button">haozhang6868@163.com</a></p>
         </div>
     </div>
     <footer>
-        <p>© 2024 张浩的个人简历网站</p>
+        <p>© 2024 个人简历网站</p>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
