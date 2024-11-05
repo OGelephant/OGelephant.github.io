@@ -10,15 +10,23 @@
 </head>
 <body>
     <header>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="images/image1.jpg" alt="轮播图1">
+                <img src="images/image2.jpg" alt="轮播图2">
+                <img src="images/image3.jpg" alt="轮播图3">
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
         <img src="images/1.jpg" alt="个人照片" class="profile-photo">
-        <h1>个人简历</h1>
+        <h1>张浩的个人简历</h1>
+        <button class="theme-toggle">切换主题</button>
     </header>
     <div class="container">
         <p>欢迎来到我的个人简历网站！我是一名对技术充满热情的工程师，专注于人工智能和控制科学领域。</p>
 
-        <hr>
-
-        <div class="education">
+        <div class="section">
             <h2>教育背景</h2>
             <div class="edu-item">
                 <strong>硕士学位，控制科学与工程</strong> - 西安交通大学<br>
@@ -30,9 +38,7 @@
             </div>
         </div>
 
-        <hr>
-
-        <div class="experience">
+        <div class="section">
             <h2>工作经验</h2>
             <div class="exp-item">
                 <strong>研究助理</strong> - 西安交通大学<br>
@@ -41,38 +47,36 @@
             </div>
         </div>
 
-        <hr>
-
-        <div class="skills">
+        <div class="section">
             <h2>技能</h2>
-            <div class="skill"><i class="fas fa-check-circle"></i> 人工智能与机器学习</div>
-            <div class="skill"><i class="fas fa-check-circle"></i> 深度学习框架（如TensorFlow, PyTorch）</div>
-            <div class="skill"><i class="fas fa-check-circle"></i> 控制系统设计与分析</div>
-            <div class="skill"><i class="fas fa-check-circle"></i> 编程语言：Python, C++</div>
-            <div class="skill"><i class="fas fa-check-circle"></i> 计算机视觉与图像处理</div>
+            <div class="skills">
+                <div class="skill"><i class="fas fa-check-circle"></i> 人工智能与机器学习</div>
+                <div class="skill"><i class="fas fa-check-circle"></i> 深度学习框架（如TensorFlow, PyTorch）</div>
+                <div class="skill"><i class="fas fa-check-circle"></i> 控制系统设计与分析</div>
+                <div class="skill"><i class="fas fa-check-circle"></i> 编程语言：Python, C++</div>
+                <div class="skill"><i class="fas fa-check-circle"></i> 计算机视觉与图像处理</div>
+            </div>
         </div>
 
-        <hr>
-
-        <div class="projects">
+        <div class="section">
             <h2>项目经验</h2>
-            <div class="project">
-                <h3>智能家居控制系统</h3>
-                <p>通过移动设备控制家中的各种智能设备，包括灯光、温度和安防系统。</p>
-            </div>
-            <div class="project">
-                <h3>图像识别应用</h3>
-                <p>使用深度学习技术开发的图像识别应用，能够自动识别并分类图片中的物体。</p>
-            </div>
-            <div class="project">
-                <h3>个人博客平台</h3>
-                <p>一个简单的个人博客平台，用户可以发表文章并与其他人分享想法。</p>
+            <div class="projects">
+                <div class="project">
+                    <h3>智能家居控制系统</h3>
+                    <p>通过移动设备控制家中的各种智能设备，包括灯光、温度和安防系统。</p>
+                </div>
+                <div class="project">
+                    <h3>图像识别应用</h3>
+                    <p>使用深度学习技术开发的图像识别应用，能够自动识别并分类图片中的物体。</p>
+                </div>
+                <div class="project">
+                    <h3>个人博客平台</h3>
+                    <p>一个简单的个人博客平台，用户可以发表文章并与其他人分享想法。</p>
+                </div>
             </div>
         </div>
 
-        <hr>
-
-        <div class="contact">
+        <div class="section">
             <h2>联系方式</h2>
             <p>如果您有任何问题或建议，请通过以下方式与我联系：</p>
             <p>Email: <a href="mailto:haozhang6868@163.com" class="contact-button">haozhang6868@163.com</a></p>
