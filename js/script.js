@@ -24,8 +24,7 @@ setInterval(() => {
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide); // 初始化显示第一张图片
-});
-document.addEventListener('DOMContentLoaded', () => {
+
     // 动态主题切换
     const themeToggle = document.querySelector('.theme-toggle');
     let darkMode = false;
@@ -37,7 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.color = '#f4f4f4'; // 浅色文字
             themeToggle.style.backgroundColor = '#4CAF50'; // 按钮背景
             themeToggle.style.color = '#fff'; // 按钮文字
-            // 其他元素的样式调整
+            // 隐藏轮播图
+            document.querySelector('.carousel').style.display = 'none'; // 隐藏轮播图
+            // 调整其他元素的样式
             document.querySelector('.container').style.backgroundColor = '#444'; // 内容区域背景
             document.querySelector('.container').style.color = '#f4f4f4'; // 内容区域文字
             // 调整教育背景、工作经验、技能和项目经验的样式
@@ -51,7 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.color = '#333'; // 深色文字
             themeToggle.style.backgroundColor = '#fff'; // 按钮背景
             themeToggle.style.color = '#333'; // 按钮文字
-            // 其他元素的样式调整
+            // 显示轮播图
+            document.querySelector('.carousel').style.display = 'block'; // 显示轮播图
+            // 恢复其他元素的样式
             document.querySelector('.container').style.backgroundColor = '#fff'; // 内容区域背景
             document.querySelector('.container').style.color = '#333'; // 内容区域文字
             // 恢复教育背景、工作经验、技能和项目经验的样式
